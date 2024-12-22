@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 
 def hashCoordinates(x: int, y: int):
-    MAX_COORDINATE_Y = 666013 # y va lua valori in intervalul [0, MAX_COORDINATE_Y - 1]
+    MAX_COORDINATE_Y = 666017 # y va lua valori in intervalul [0, MAX_COORDINATE_Y - 1]
     return x * MAX_COORDINATE_Y + y
 
 
@@ -25,7 +25,9 @@ def calculateGradient(seed: int):
     )
 
     gradient = possible_gradients[np.random.randint(0, len(possible_gradients))]
-    #gradient = np.random.rand(2)
+
+    # method 2, random between [-1.0, 1.0]
+    gradient = np.random.rand(2) * 2 - 1
 
     # normalize (doar din cauza ca avem vectori nenormalizati pe diagonale, ca e mai usor de vizualizat asa)
     if np.linalg.norm(gradient) != 0.0:
