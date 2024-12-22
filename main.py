@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 
 def hashCoordinates(x: int, y: int):
-    MAX_COORDINATE_Y = 666017 # y va lua valori in intervalul [0, MAX_COORDINATE_Y - 1]
+    MAX_COORDINATE_Y = 666013 # y va lua valori in intervalul [0, MAX_COORDINATE_Y - 1]
     return x * MAX_COORDINATE_Y + y
 
 
@@ -42,7 +42,7 @@ def calculateInitialHeight(seed: int):
 
 
 def fadeFunction(t: float):
-    return 6 * (t * 5) - 15 * (t * 4) + 10 * (t ** 3)
+    return 6 * (t ** 5) - 15 * (t ** 4) + 10 * (t ** 3)
 
 def fadeFunctionXY(x: float, y: float):
     return fadeFunction(x) * fadeFunction(y)
@@ -50,9 +50,9 @@ def fadeFunctionXY(x: float, y: float):
 
 def noisePerGrid(x: int, y: int, currentGridSize: int):
     x0 = (x // currentGridSize) * currentGridSize
-    x1 = x0 + currentGridSize
+    x1 = x0 + currentGridSize # fara -1 aici ca nu se intampla ce trebuie
     y0 = (y // currentGridSize) * currentGridSize
-    y1 = y0 + currentGridSize
+    y1 = y0 + currentGridSize # fara -1 aici ca nu se intampla ce trebuie
 
     seed00 = hashCoordinates(x0, y0)
     seed01 = hashCoordinates(x0, y1)
@@ -84,10 +84,10 @@ def noisePerGrid(x: int, y: int, currentGridSize: int):
     dot10Added = dot10 + calculateInitialHeight(seed10)
     dot11Added = dot11 + calculateInitialHeight(seed11)
 
-    fade00 = fadeFunctionXY(1 - dist00Norm[0], 1 - dist00Norm[1])
-    fade01 = fadeFunctionXY(1 - dist01Norm[0], 1 + dist01Norm[1])
-    fade10 = fadeFunctionXY(1 + dist10Norm[0], 1 - dist10Norm[1])
-    fade11 = fadeFunctionXY(1 + dist11Norm[0], 1 + dist11Norm[1])
+    fade00 = fadeFunctionXY(1.0 - dist00Norm[0], 1.0 - dist00Norm[1])
+    fade01 = fadeFunctionXY(1.0 - dist01Norm[0], 1.0 + dist01Norm[1])
+    fade10 = fadeFunctionXY(1.0 + dist10Norm[0], 1.0 - dist10Norm[1])
+    fade11 = fadeFunctionXY(1.0 + dist11Norm[0], 1.0 + dist11Norm[1])
 
     output = dot00Added * fade00 + dot01Added * fade01 + dot10Added * fade10 + dot11Added * fade11
     return output
@@ -109,6 +109,7 @@ def perlinNoise2D(x: int, y: int):
 
     for _ in range(NUM_OCTAVES):
         output += (currentAmplitude * noisePerGrid(x, y, currentGridSize))
+
         currentGridSize *= GRID_MULTIPLIER
         currentAmplitude *= AMPLITUDE_DIMINISHMENT
 
@@ -133,6 +134,7 @@ image = (image - imageMinimum) / (imageMaximum - imageMinimum)
 
 
 plt.imshow(image, cmap='gray')
+plt.title('Perlin Noise 2D - grayscale')
 plt.axis('off')
 plt.show()
 
@@ -155,8 +157,11 @@ for i in range(IMAGE_HEIGHT):
 
 
 plt.imshow(displayedImage)
+plt.title('Perlin Noise 2D - colored')
 plt.axis('off')
 plt.show()
 
 print('Maximum: ', imageMaximum)
 print('Minimum: ', imageMinimum)
+
+
