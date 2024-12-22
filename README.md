@@ -16,10 +16,12 @@
 
 <p align = "center">
 
-  First Example: <br/>
-  
-  <img width="300" height="275" src="https://github.com/Razvan48/Perlin-Noise-2D-in-Python/blob/main/demo/0.png">
-  <img width="300" height="275" src="https://github.com/Razvan48/Perlin-Noise-2D-in-Python/blob/main/demo/1.png">
+  &emsp; &emsp; First Example: <br/>
+
+  <p align = "center">
+    <img width="300" height="275" src="https://github.com/Razvan48/Perlin-Noise-2D-in-Python/blob/main/demo/0.png">
+    <img width="300" height="275" src="https://github.com/Razvan48/Perlin-Noise-2D-in-Python/blob/main/demo/1.png">
+  </p>
   
   <br/>
   <br/>
@@ -28,10 +30,13 @@
   <br/>
   <br/>
 
-  Second Example:
+  &emsp; &emsp; Second Example: <br/>
+
+  <p align= "center">
+    <img width="300" height="275" src="https://github.com/Razvan48/Perlin-Noise-2D-in-Python/blob/main/demo/2.png">
+    <img width="300" height="275" src="https://github.com/Razvan48/Perlin-Noise-2D-in-Python/blob/main/demo/3.png">
+  </p>
   
-  <img width="300" height="275" src="https://github.com/Razvan48/Perlin-Noise-2D-in-Python/blob/main/demo/2.png">
-  <img width="300" height="275" src="https://github.com/Razvan48/Perlin-Noise-2D-in-Python/blob/main/demo/3.png">
 </p>
 
 
