@@ -20,14 +20,16 @@ def calculateGradient(seed: int):
             [1.0, 1.0],
             [-1.0, 1.0],
             [1.0, -1.0],
-            [-1.0, -1.0]
+            [-1.0, -1.0],
+
+            [0.0, 0.0]
         ]
     )
 
     gradient = possible_gradients[np.random.randint(0, len(possible_gradients))]
 
-    # method 2, random between [-1.0, 1.0]
-    gradient = np.random.rand(2) * 2 - 1
+    # metoda 2, aleator din intervalul [-1.0, 1.0]
+    # gradient = np.random.rand(2) * 2 - 1
 
     # normalize (doar din cauza ca avem vectori nenormalizati pe diagonale, ca e mai usor de vizualizat asa)
     if np.linalg.norm(gradient) != 0.0:
